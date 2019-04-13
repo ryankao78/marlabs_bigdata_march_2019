@@ -8,7 +8,7 @@ import org.apache.hadoop.mapreduce.lib.input.*;
 import org.apache.hadoop.mapreduce.lib.output.*;
 import org.apache.hadoop.util.*;
 
-public static class MapClass extends Mapper<LongWritable,Text,Text,Text>
+public static class MyMap extends Mapper<LongWritable,Text,Text,Text>
 {
   public void map(LongWritable key, Text value, Context context)
   {
@@ -24,7 +24,7 @@ public static class MapClass extends Mapper<LongWritable,Text,Text,Text>
   }
 }
 
-public static class ReduceClass extends Reducer<Text,Text,Text,IntWritable>
+public static class MyReduce extends Reducer<Text,Text,Text,IntWritable>
 {
   public int max = -1;
   public void reduce(Text key, Iterable <Text> values, Context context) throws IOException, InterruptedException
