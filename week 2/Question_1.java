@@ -14,7 +14,7 @@ public static class MapClass extends Mapper<LongWritable,Text,Text,Text>
   {
      try{
         String[] str = value.toString().split("\t", -3);
-        String gender=str[3];
+        String gender=str[2];
         context.write(new Text(gender), new Text(value));
      }
      catch(Exception e)
@@ -34,8 +34,8 @@ public static class ReduceClass extends Reducer<Text,Text,Text,IntWritable>
      for (Text val : values)
      {
         String [] str = val.toString().split("\t", -3);
-        if(Integer.parseInt(str[4])>max)
-        max=Integer.parseInt(str[4]);
+        if(Integer.parseInt(str[3])>max)
+        max=Integer.parseInt(str[3]);
      }
 
      context.write(new Text(key), new IntWritable(max));
